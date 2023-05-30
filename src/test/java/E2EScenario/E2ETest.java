@@ -34,11 +34,13 @@ public class E2ETest extends BaseTests
         allVideoGamesPage.scrollToSortMenu();
         allVideoGamesPage.sortBy("Price: High to Low");
 
+        try {Thread.sleep(5000);} catch (InterruptedException e) {throw new RuntimeException(e);}
         ProductPage productPage = allVideoGamesPage.openInNewTabsProducts(AllVideoGamesPage.ComparisonOperator.lessThan , 15000);
         productPage.addAllRequiredProductsToCart();
 
         gotoHomepage();
 
         softAssert.assertEquals(homePage.getNavCartCount() , allVideoGamesPage.getNumOfRequiredProducts());
+        softAssert.assertAll();
     }
 }
