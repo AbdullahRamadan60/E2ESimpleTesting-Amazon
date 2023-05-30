@@ -29,24 +29,15 @@ public class E2ETest extends BaseTests
         softAssert.assertEquals(allVideoGamesPage.getPageHeader() , "Video Games");
 
         allVideoGamesPage.clickFreeShippingCheckBox();
-        try {Thread.sleep(3000);} catch (InterruptedException e) {throw new RuntimeException(e);}
         allVideoGamesPage.scrollToNewConditionFilter();
-        try {Thread.sleep(3000);} catch (InterruptedException e) {throw new RuntimeException(e);}
         allVideoGamesPage.clickNewConditionFilter();
-        try {Thread.sleep(3000);} catch (InterruptedException e) {throw new RuntimeException(e);}
         allVideoGamesPage.scrollToSortMenu();
-        try {Thread.sleep(3000);} catch (InterruptedException e) {throw new RuntimeException(e);}
         allVideoGamesPage.sortBy("Price: High to Low");
-        try {Thread.sleep(3000);} catch (InterruptedException e) {throw new RuntimeException(e);}
 
         ProductPage productPage = allVideoGamesPage.openInNewTabsProducts(AllVideoGamesPage.ComparisonOperator.lessThan , 15000);
-        //getWindowManager().openLoginPageInANewWindow();
-        try {Thread.sleep(3000);} catch (InterruptedException e) {throw new RuntimeException(e);}
         productPage.addAllRequiredProductsToCart();
-        try {Thread.sleep(3000);} catch (InterruptedException e) {throw new RuntimeException(e);}
 
         gotoHomepage();
-        try {Thread.sleep(3000);} catch (InterruptedException e) {throw new RuntimeException(e);}
 
         softAssert.assertEquals(homePage.getNavCartCount() , allVideoGamesPage.getNumOfRequiredProducts());
     }
